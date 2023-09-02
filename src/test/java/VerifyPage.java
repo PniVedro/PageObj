@@ -6,11 +6,13 @@ import static com.codeborne.selenide.Selenide.$;
 public class VerifyPage {
     private SelenideElement code = $("[data-test-id=code] input");
     private SelenideElement verifyButton = $("[data-test-id=action-verify]");
-    public VerifyPage(){
+
+    public VerifyPage() {
         code.shouldBe(visible);
     }
-    public DashboardPage verify(){
-        code.setValue("12345");
+
+    public DashboardPage verify(Data.VerificationCode verificationCode) {
+        code.setValue(verificationCode.getCode());
         verifyButton.click();
         return new DashboardPage();
     }

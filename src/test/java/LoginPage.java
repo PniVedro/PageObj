@@ -7,9 +7,9 @@ public class LoginPage {
     private SelenideElement password = $("[data-test-id=password] input");
     private SelenideElement buttonLogin = $("[data-test-id=action-login]");
 
-    public VerifyPage loginValid(){
-        login.setValue("vasya");
-        password.setValue("qwerty123");
+    public VerifyPage loginValid(Data.AuthInfo info) {
+        login.setValue(Data.getAuthInfo().getLogin());
+        password.setValue(Data.getAuthInfo().getPassword());
         buttonLogin.click();
         return new VerifyPage();
 
